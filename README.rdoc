@@ -6,7 +6,7 @@ This gem extends ActiveRecord and Resque to add an automatic queue to any persis
 
 Assumption is that you have a working knowledge of Resque, because it is awesome:
 
-https://github.com/defunkt/resque
+[http://github.com/defunkt/resque](http://github.com/defunkt/resque)
 
 To get it, just drop in the gem and you're good to go:
 
@@ -50,4 +50,4 @@ Shiny.
 
 == The Usual
 
-Author: Kevin McPhillips - github@kevinmcphillips.ca
+Author: Kevin McPhillips - [github@kevinmcphillips.ca](mailto:github@kevinmcphillips.ca)

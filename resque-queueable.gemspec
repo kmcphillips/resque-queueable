@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Kevin McPhillips"]
   s.email       = ["github@kevinmcphillips.ca"]
   s.homepage    = "http://github.com/kimos/resque-queueable"
-  s.summary     = "Adds an easy interface to a class defined as queueable to enque any available methods."
-  s.description = "A class can be defined as 'queueable'. That adds extensions to add any method to the queue that exists on the method instance."
+  s.summary     = "Adds an easy interface to an Active Record model defined as queueable to enque any methods."
+  s.description = "An Active Record model can be defined as 'queueable'. That adds extensions to add any method to the queue that exists on the method instance."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
