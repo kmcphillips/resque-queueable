@@ -1,5 +1,7 @@
 module ResqueQueueable
 
+  class InvalidQueue < StandardError ; end
+
   def self.included(base)
     base.extend ClassMethods
   end
@@ -14,6 +16,7 @@ module ResqueQueueable
 
   module InstanceMethods
     def queue
+      raise InvalidQueue, "Cannot access a queue for an unsaved record" unless self.id
       Queue.new(self.class, self.id)
     end
   end

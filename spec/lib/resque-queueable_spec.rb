@@ -29,4 +29,8 @@ describe ResqueQueueable do
     pie.should_receive(:is).with("delicious")
     Pie.perform(pie.id, :is, "delicious")
   end
+
+  it "should raise if the record is not saved" do
+    lambda{ Pie.new.queue }.should raise_error(ResqueQueueable::InvalidQueue)
+  end
 end
