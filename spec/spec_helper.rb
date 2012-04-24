@@ -23,7 +23,7 @@ ActiveRecord::Base.connection.create_table(:pies) do |t|
 end
 
 class Pie < ActiveRecord::Base
-  resqueueable
+  resqueable
 
   def is(adj)
     "This pie ##{self.id} is #{adj}"
