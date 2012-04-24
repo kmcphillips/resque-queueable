@@ -1,0 +1,53 @@
+= Resque Queueable
+
+== Overview
+
+This gem extends ActiveRecord and Resque to add an automatic queue to any persisted model. Simply mark the model as 'queueable' and then call methods on the queue.
+
+Assumption is that you have a working knowledge of Resque, because it is awesome:
+
+https://github.com/defunkt/resque
+
+To get it, just drop in the gem and you're good to go:
+
+  gem 'resque-queueable', :git => "http://github.com/kimos/resque-queueable"
+
+
+== Example Usage
+
+The following is the old boring way:
+
+  class Pie < ActiveRecord::Base
+    def describe(adj)
+      "This pie is #{adj}"
+    end
+
+    def async_describe(adj)
+      Resque.enque(self.class, self.id, :describe, adj)
+    end
+
+    def self.perform(id, method, *args)
+      self.find(id).send(method, args)
+    end
+  end
+
+  Pie.last.async_describe "delicious"
+
+It can be replaced with:
+
+  class Pie < ActiveRecord::Base
+    queueable
+
+    def describe(adj)
+      "This pie is #{adj}"
+    end
+  end
+
+  Pie.last.queue.describe "delicious"
+
+Shiny.
+
+
+== The Usual
+
+Author: Kevin McPhillips - github@kevinmcphillips.ca
