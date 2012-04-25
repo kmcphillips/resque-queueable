@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ResqueQueueable do
   before(:each) do
-    Resque.stub(:enque) # Don't fire this accidentally
+    Resque.stub(:enqueue) # Don't fire this accidentally
   end
 
   let(:pie) do
