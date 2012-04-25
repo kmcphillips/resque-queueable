@@ -3,6 +3,7 @@ require 'spec_helper'
 describe ResqueQueueable do
   before(:each) do
     Resque.stub(:enqueue) # Don't fire this accidentally
+    ActiveRecord::Base.stub(:reconnect!)
   end
 
   let(:pie) do
@@ -36,5 +37,12 @@ describe ResqueQueueable do
 
   it "should get the name of the queue" do
     Pie.instance_variable_get('@queue').should == :test_queue
+  end
+
+  it "should reconnect on each perform" do
+    Pie.stub(:find => pie)
+    pie.stub(:is => "delicious")
+    ActiveRecord::Base.should_receive(:reconnect!)
+    Pie.perform(pie.id, :is, "delicious")
   end
 end
