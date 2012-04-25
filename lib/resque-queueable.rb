@@ -25,7 +25,8 @@ module ResqueQueueable
 
   module SingletonMethods
     def perform(id, method, *args)
-      ActiveRecord::Base.reconnect!   # Idle workers lose their DB connection sometimes. This makes sure we have a good connection for each run.
+      # Idle workers lose their DB connection sometimes. This makes sure we have a good connection for each run.
+      ActiveRecord::Base.reconnect! if ActiveRecord::Base.respond_to? :reconnect!
       find(id).send(method, *args)
     end
   end
