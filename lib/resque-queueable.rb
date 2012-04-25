@@ -7,7 +7,9 @@ module ResqueQueueable
   end
 
   module ClassMethods
-    def resqueable
+    def resqueable(queue)
+      @queue = queue
+
       include InstanceMethods
       extend SingletonMethods
       true

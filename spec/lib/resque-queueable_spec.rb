@@ -20,7 +20,7 @@ describe ResqueQueueable do
   end
 
   it "should enqueue with some metaprogramming magic" do
-    Resque.should_receive(:enque).with(pie.class, pie.id, :is, "delicious")
+    Resque.should_receive(:enqueue).with(pie.class, pie.id, :is, "delicious")
     pie.queue.is("delicious")
   end
 
@@ -32,5 +32,9 @@ describe ResqueQueueable do
 
   it "should raise if the record is not saved" do
     lambda{ Pie.new.queue }.should raise_error(ResqueQueueable::InvalidQueue)
+  end
+
+  it "should get the name of the queue" do
+    Pie.instance_variable_get('@queue').should == :test_queue
   end
 end
