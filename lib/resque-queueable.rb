@@ -39,6 +39,7 @@ module ResqueQueueable
 
     def method_missing(method, *args)
       Resque.enqueue(klass, id, method, *args)
+      true
     end
   end
 end
