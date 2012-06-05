@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    resque-queueable (0.4)
+    resque-queueable (0.5.4)
       activerecord (~> 3.0)
       activesupport (~> 3.0)
       rails (~> 3.0)
