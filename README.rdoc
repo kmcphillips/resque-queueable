@@ -36,7 +36,7 @@ The following is the old boring way:
 It can be replaced with:
 
   class Pie < ActiveRecord::Base
-    resqueable
+    resqueable :queue_name
 
     def describe(adj)
       "This pie is #{adj}"
