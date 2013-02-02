@@ -10,7 +10,7 @@ http://github.com/defunkt/resque
 
 To get it, just drop in the gem and you're good to go:
 
-  gem 'resque-queueable', :git => "http://github.com/kimos/resque-queueable"
+  gem 'resque-queueable', :git => "http://github.com/kmcphillips/resque-queueable"
 
 
 == Example Usage
